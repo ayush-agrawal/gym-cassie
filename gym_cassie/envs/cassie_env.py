@@ -35,6 +35,7 @@ class CassieEnv(gym.Env):
 
         self.init_qpos = np.copy(self.sim.qpos())
         self.init_qvel = np.copy(self.sim.qvel())
+        print("help help helpd **************8888")
 
     @property
     def dt(self):

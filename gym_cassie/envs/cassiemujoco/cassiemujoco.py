@@ -104,6 +104,7 @@ class CassieSim:
         y = state_out_t()
 
     def __del__(self):
+        # pass
         cassie_sim_free(self.c)
 
 class CassieVis:

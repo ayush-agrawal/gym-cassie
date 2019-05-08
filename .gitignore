@@ -4,6 +4,9 @@ cassie/cassiemujoco/mjkeyold.txt
 cassie/cassiemujoco/mjpro150/
 cassie/pickled
 
+gym_cassie/envs/cassiemujoco/mjkey.txt
+gym_cassie/envs/cassiemujoco/mjpro150/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
