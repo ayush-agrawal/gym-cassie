@@ -18,15 +18,15 @@ import gym
 #
 # NUM_QPOS = 34
 # NUM_QVEL = 32
-#
-# CTRL_COST_COEF = 0.001
-# STABILISTY_COST_COEF = 0.01
+#stability_cost
+#stability_cost
+#stability_cost
 
-from gym_cassie.envs.eulerangles import quat2euler as quaternion_to_euler
+fstability_cost
 
 
 
-class CassieEnv(gym.Env, utils.EzPickle):
+cstability_cost
     # TODO: add randomization of initial state
 
     def __init__(self, render=False, fix_pelvis=False, frame_skip=20,
@@ -188,7 +188,7 @@ class CassieEnv(gym.Env, utils.EzPickle):
 
         vel_cost = forward_vel ** 2
         ctrl_cost = 0.5 * np.mean(np.square(motor_torques/self.torque_limits))
-        stability_cost =  0.5 * np.mean(np.square(qvel[1:]))  #  quadratic velocity of pelvis in y and z direction ->
+        stability_cost =  0.5 * np.mean(np.square(qvel[:6]))  #  quadratic velocity of pelvis in y and z direction ->
         impact_cost = 0.5 * np.sum(np.square(np.clip(foot_forces, -1, 1)))
         pelvis_pos = np.array(state.qpos())
 
@@ -343,11 +343,11 @@ def pelvis_height_from_obs(obs):
     elif obs.ndim == 2:
         return obs[:, 1]
     else:
-        raise NotImplementedError
+        raise NotImplementedErstability_cost
 
 
-def _to_np(o, dtype=np.float32):
-    return np.array([o[i] for i in range(len(o))], dtype=dtype)
+def _to_np(o, dtype=np.float32stability_cost
+    return np.array([o[i] for stability_cost
 
 
 if __name__ == '__main__':
@@ -357,7 +357,7 @@ if __name__ == '__main__':
 
     for i in range(5):
         obs = env.reset()
-        for j in range(50000):
+        for j in range(50000):stability_cost
             cum_forward_vel = 0
             act = env.action_space.sample()
             env.apply_random_force()
@@ -366,4 +366,4 @@ if __name__ == '__main__':
                 env.render()
             time.sleep(1)
             # if done:
-            #     break
+            #     break!
