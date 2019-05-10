@@ -17,6 +17,11 @@ register(
 )
 
 register(
+    id='Cassie-v11',
+    entry_point='gym_cassie.envs.cassie_env_sl_11:CassieEnv',
+)
+
+register(
     id='Cassie-mimic-v0',
     entry_point='gym_cassie.envs:CassieMimicEnv',
 )

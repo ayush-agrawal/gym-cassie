@@ -264,7 +264,7 @@ class CassieEnv(gym.Env, utils.EzPickle):
 
             vel_cost = forward_vel ** 2
             ctrl_cost = 0.5 * np.mean(np.square(motor_torques/self.torque_limits))
-            stability_cost =  0.5 * np.mean(np.square(qvel[:6]))  #  quadratic velocity of pelvis in y and z direction ->
+            stability_cost =  0.5 * np.mean(np.square(qvel))  #  quadratic velocity of pelvis in y and z direction ->
             impact_cost = 0.5 * np.sum(np.square(np.clip(foot_forces, -1, 1)))
             pelvis_pos = np.array(state.qpos())
             height_cost = 0.5 * np.sum(np.square(pelvis_pos[2] - 1.0))
@@ -275,12 +275,14 @@ class CassieEnv(gym.Env, utils.EzPickle):
             qpos_joints_ref = np.array([0, 0, 0.5, -1.2, -1.6, 0, 0, 0.5, -1.2, -1.6])
             jointref_cost = 0.5 * np.sum(np.square(qpos_joints - qpos_joints_ref))
 
+            # rotation_cost = 0.5 * np.mean(np.square(pelvis_rot_vel))
+
 
             reward = 1.0*np.exp(-100.0 * vel_cost) \
                     + 1.0*np.exp(-100.0 * ctrl_cost) \
                     + 1.0*np.exp(-10.0 * stability_cost) \
                     + 1.0*np.exp(-100.0 * impact_cost) \
-                    + 1.0*float(pelvis_pos[2] > 0.8 and pelvis_pos[2] < 1.05)
+                    + 1.0*float(pelvis_pos[2] > 0.8 and pelvis_pos[2] < 0.9)
                     # + 1.0*np.exp(-100.0 * height_cost) \
                     # + 1.0*np.exp(-100.0 * jointref_cost)
 
