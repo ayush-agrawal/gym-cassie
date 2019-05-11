@@ -4,6 +4,8 @@
     - install the package by running
         `pip install -e .`
 3. Go to gym-cassie folder, 
+    (Note: gym-casse is forked from https://github.com/p-morais/gym-cassie; 
+    the model is modified (especially) observation and reward functions)
     - install the package in the similar manner
         `pip install -e .`
 
