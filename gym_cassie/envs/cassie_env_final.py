@@ -52,7 +52,7 @@ class CassieEnv(gym.Env, utils.EzPickle):
         self.task = policytask
         self.ctrl_type = ctrl_type
         self._pd_params_to_set = []
-        self.apply_forces = True#apply_forces
+        self.apply_forces = False#apply_forces
 
         # action and observation space specs
         self.act_limits_array = self._build_act_limits_array()
@@ -214,7 +214,7 @@ class CassieEnv(gym.Env, utils.EzPickle):
         qpos = self.sim.get_state().qpos()
         qvel = self.sim.get_state().qvel()
 
-        if True:
+        if False:
             # qpos[:3] = qpos[:3] + np.random.uniform(low=-0.1, high=0.1, size=3)
             # qvel[:3] = qvel[:3] + np.random.uniform(low=-0.1, high=0.1, size=3)
 
